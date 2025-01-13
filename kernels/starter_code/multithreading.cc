@@ -111,8 +111,8 @@ void MatmulOperator::mat_mul_multithreading(struct matmul_params* params) {
 
     // TODO: Thread creation
     for (int i = 0; i < num_thread; ++i) {
-        threads_args[i].start = i * (params->C.column / num_thread);
-        threads_args[i].end = (i + 1) * (params->C.column / num_thread);
+        threads_args[i].start = i * (n / num_thread);
+        threads_args[i].end = (i + 1) * (n / num_thread);
         threads_args[i].params = params;
         pthread_create(&thread_pool[i], nullptr, multithreading_worker_func, &threads_args[i]);
     }

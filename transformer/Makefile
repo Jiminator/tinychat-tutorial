@@ -21,7 +21,7 @@ ifeq ($(shell uname -m),x86_64)
 	CXXFLAGS += -mavx2 -mfma -ffast-math -fpermissive -DQM_x86
 	LIB_SRC += $(wildcard $(LIB_DIR)/avx/*.cc)
 else ifeq ($(shell uname -p),arm)
-	CXX = /opt/homebrew/opt/llvm/bin/clang++
+	CXX = g++
 	LIB += -L/opt/homebrew/opt/boost/lib
 	CXXFLAGS += -march=native -DQM_ARM -fPIC -march=armv8.2-a+dotprod
 	INCLUDE_DIRS += -I/opt/homebrew/opt/boost/include
